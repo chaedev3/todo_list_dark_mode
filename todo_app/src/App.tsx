@@ -29,7 +29,7 @@ function App() {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Root>
-        <ToggleButton props={darkModeHandler} />
+        <ToggleButton darkModeHandler={darkModeHandler} />
         <TodoInput />
         <TodoList />
       </Root>

@@ -1,3 +1,7 @@
-export default function ToggleButton(props: () => void) {
-  return <button onClick={props}>토글토글</button>;
+type props = {
+  darkModeHandler: () => void;
+};
+
+export default function ToggleButton({ darkModeHandler }: props) {
+  return <button onClick={darkModeHandler}>토글토글</button>;
 }
