@@ -13,16 +13,5 @@ export const inputState = atom<string>({
 
 export const todoListState = atom<TodoTypes[]>({
   key: "todoLsitState",
-  default: [
-    {
-      id: 0,
-      texts: "리액트 배우기",
-      done: false,
-    },
-    {
-      id: 1,
-      texts: "Typescript 배우기",
-      done: false,
-    },
-  ],
+  default: [],
 });

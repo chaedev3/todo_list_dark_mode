@@ -20,11 +20,6 @@ export default function TodoInput() {
     setText("");
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.code === "Enter") {
-      addTodo();
-    }
-  };
   return (
     <div>
       <input
@@ -32,7 +27,6 @@ export default function TodoInput() {
         placeholder="할 일을 입력해주세요."
         value={text}
         onChange={(e) => setText(e.target.value)}
-        onKeyDown={onKeyDown}
       />
       <button onClick={addTodo}>할 일 추가</button>
     </div>
