@@ -421,3 +421,10 @@ css 적용이 안 된 모습은 다음과 같다. 이제 css 를 입혀보자!!
 ![Animation](https://github.com/chaedev3/todo_list_dark_mode/assets/109324466/f0fb3094-ef05-4096-b772-b8b046d30d95)
 
 ### 3. CSS 
+
+Figma 로 대충 만들어봤다. 이렇게 한번 만들어보자!! 
+
+![Desktop - 1](https://github.com/chaedev3/todo_list_dark_mode/assets/109324466/82798f4f-a8cd-433d-b364-ff6289005cac)
+
+
+
