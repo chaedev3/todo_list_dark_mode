@@ -10,11 +10,25 @@ import { isDarkAtom } from "./recoil/atom";
 
 const Root = styled.div`
   display: flex;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+`;
+
+const Todo = styled.div`
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 80%;
+  background-color: ${(props) => props.theme.pgColor};
+  border: 4px solid black;
+  p {
+    font-weight: bold;
+    font-size: 40px;
+  }
 `;
 
 function App() {
@@ -24,14 +38,17 @@ function App() {
   const darkModeHandler = () => {
     setDarkMode((prev: boolean) => !prev);
   };
-
+  console.log(isDarkMode);
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Root>
-        <ToggleButton darkModeHandler={darkModeHandler} />
-        <TodoInput />
-        <TodoList />
+        <Todo>
+          <ToggleButton darkModeHandler={darkModeHandler} />
+          <p>My Todo List</p>
+          <TodoInput />
+          <TodoList />
+        </Todo>
       </Root>
     </ThemeProvider>
   );

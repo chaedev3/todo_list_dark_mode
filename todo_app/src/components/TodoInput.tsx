@@ -1,5 +1,22 @@
 import { useRecoilState } from "recoil";
 import { TodoTypes, inputState, todoListState } from "../recoil/todo";
+import styled from "styled-components";
+
+const AddButton = styled.button`
+  background-color: ${(props) => props.theme.btnColor};
+  border: none;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+`;
+
+const InputTag = styled.input`
+  width: 80%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+`;
 
 export default function TodoInput() {
   const [text, setText] = useRecoilState<string>(inputState);
@@ -22,13 +39,13 @@ export default function TodoInput() {
 
   return (
     <div>
-      <input
+      <InputTag
         type="text"
-        placeholder="할 일을 입력해주세요."
+        placeholder="Add your information here"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={addTodo}>할 일 추가</button>
+      <AddButton onClick={addTodo}>Add</AddButton>
     </div>
   );
 }

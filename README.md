@@ -422,9 +422,54 @@ css 적용이 안 된 모습은 다음과 같다. 이제 css 를 입혀보자!!
 
 ### 3. CSS 
 
-Figma 로 대충 만들어봤다. 이렇게 한번 만들어보자!! 
+Figma 로 대충 만들어봤다. 이렇게 한번 만들어보자!!  
 
-![Desktop - 1](https://github.com/chaedev3/todo_list_dark_mode/assets/109324466/82798f4f-a8cd-433d-b364-ff6289005cac)
+<Light Mode 버전> 
+
+![lightmode](https://github.com/chaedev3/todo_list_dark_mode/assets/109324466/f835b174-07f2-47f1-9a00-e82d6ff0a5d9)
+
+<Dark Mode 버전> 
+
+![darkmode](https://github.com/chaedev3/todo_list_dark_mode/assets/109324466/56dced5b-3248-4266-9cb1-aee76d80495c)
+
+
+
+처음부터 설계를 하고 했어야 했는데 그렇지 못했기 때문에 theme 에 저장된 색깔들을 바꿔준다. 
+
+맨 바깥을 싸고 있는 bgColor, 그 안을 싸고 있는 pgColor, 글자색인 textColor, 버튼 색깔인 btnColor 이렇게 4가지를 정의해준다. 
+
+```typescript
+// styles/styled.d.ts 
+import "styled-components";
+
+declare module "styled-components" {
+  export interface DefaultTheme {
+    bgColor: string;
+    textColor: string;
+    pgColor: string;
+    btnColor: string;
+  }
+}
+
+// styles/Theme.ts 
+import { DefaultTheme } from "styled-components/dist/types";
+
+export const lightTheme: DefaultTheme = {
+  bgColor: "FF642F",
+  textColor: "001018",
+  pgColor: "FFFFFF",
+  btnColor: "3BCA49",
+};
+
+export const darkTheme: DefaultTheme = {
+  bgColor: "23262F",
+  textColor: "F4F5F6",
+  pgColor: "353945",
+  btnColor: "FF642F",
+};
+```
+
+
 
 
 
