@@ -2,20 +2,29 @@ import { useRecoilState } from "recoil";
 import { TodoTypes, inputState, todoListState } from "../recoil/todo";
 import styled from "styled-components";
 
+const Input = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+`;
 const AddButton = styled.button`
   background-color: ${(props) => props.theme.btnColor};
   border: none;
-  margin: 10px;
   padding: 5px;
   border-radius: 10px;
   color: white;
 `;
 
 const InputTag = styled.input`
-  width: 80%;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  width: 90%;
+  border: none;
+  background-color: ${(props) => props.theme.pgColor};
+  color: ${(props) => props.theme.textColor};
+  &:focus {
+    outline: none;
+  }
 `;
 
 export default function TodoInput() {
@@ -38,7 +47,7 @@ export default function TodoInput() {
   };
 
   return (
-    <div>
+    <Input>
       <InputTag
         type="text"
         placeholder="Add your information here"
@@ -46,6 +55,6 @@ export default function TodoInput() {
         onChange={(e) => setText(e.target.value)}
       />
       <AddButton onClick={addTodo}>Add</AddButton>
-    </div>
+    </Input>
   );
 }

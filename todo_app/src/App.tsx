@@ -18,17 +18,29 @@ const Root = styled.div`
 `;
 
 const Todo = styled.div`
-  box-sizing: border-box;
+  display: flex;
+  box-sizing: content-box;
   justify-content: center;
   align-items: center;
   height: 80%;
   width: 80%;
   background-color: ${(props) => props.theme.pgColor};
   border: 4px solid black;
-  p {
-    font-weight: bold;
-    font-size: 40px;
-  }
+`;
+
+const TodoItem = styled.div`
+  box-sizing: content-box;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 80%;
+`;
+
+const Title = styled.p`
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 `;
 
 function App() {
@@ -38,16 +50,19 @@ function App() {
   const darkModeHandler = () => {
     setDarkMode((prev: boolean) => !prev);
   };
-  console.log(isDarkMode);
+
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Root>
         <Todo>
-          <ToggleButton darkModeHandler={darkModeHandler} />
-          <p>My Todo List</p>
-          <TodoInput />
-          <TodoList />
+          <TodoItem>
+            <ToggleButton darkModeHandler={darkModeHandler} />
+            <Title>My Todo List</Title>
+            <TodoInput />
+            <TodoList />
+            <hr />
+          </TodoItem>
         </Todo>
       </Root>
     </ThemeProvider>

@@ -1,15 +1,31 @@
 import { useRecoilState } from "recoil";
 import { TodoTypes, todoListState } from "../recoil/todo";
 import styled from "styled-components";
-import { TiDelete, TiInputChecked } from "react-icons/ti";
+import { TiDeleteOutline } from "react-icons/ti";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../recoil/atom";
 
 const Item = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
+const TodoContent = styled.p`
+  flex-grow: 1;
+  margin: 5px;
+  font-size: 16px;
+`;
+const CustomCheckbox = styled.input.attrs({ type: "checkbox " })`
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid black;
+  background-color: ${(props) =>
+    props.checked ? props.theme.pgColor : "#fff"};
+`;
 
 export default function TodoItem({ todo }: { todo: TodoTypes }) {
+  const isDarkMode = useRecoilValue(isDarkAtom);
   // 값을 불러오고 변경도 해야할 때 useRecoilState
   const [todos, setTodos] = useRecoilState<TodoTypes[]>(todoListState);
   const changeDoneHandler = (id: number) => {
@@ -25,18 +41,26 @@ export default function TodoItem({ todo }: { todo: TodoTypes }) {
 
   return (
     <Item>
-      <input
-        type="checkbox"
-        // style={{ accentColor: "${(props) => props.theme.btnColor}" }}
-        onClick={() => changeDoneHandler(todo.id)}
-      />
-      <p>{todo.id}</p>
+      <input type="checkbox" onClick={() => changeDoneHandler(todo.id)} />
       {todo.done ? (
-        <p style={{ textDecorationLine: "line-through" }}>{todo.texts}</p>
+        <TodoContent style={{ textDecorationLine: "line-through" }}>
+          {todo.texts}
+        </TodoContent>
       ) : (
-        <p>{todo.texts}</p>
+        <TodoContent>{todo.texts}</TodoContent>
       )}
-      <TiDelete onClick={() => deleteTodo(todo.id)}>삭제!!</TiDelete>
+      {isDarkMode ? (
+        <TiDeleteOutline
+          onClick={() => deleteTodo(todo.id)}
+          style={{ color: "white" }}
+        >
+          삭제!!
+        </TiDeleteOutline>
+      ) : (
+        <TiDeleteOutline onClick={() => deleteTodo(todo.id)}>
+          삭제!!
+        </TiDeleteOutline>
+      )}
     </Item>
   );
 }
